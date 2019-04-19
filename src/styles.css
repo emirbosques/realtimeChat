@@ -10,11 +10,20 @@
 
 .chat-window{
   padding: 10px;
-  width: 300px;
-  height: 400px;
+  width: 400px;
+  height: 460px;
   overflow: hidden;
-  border: 1px solid #4080FF;
-  border-radius: 20px;
+  border: 2px solid rgb(14, 65, 167);
+  border-radius: 15px;
+}
+
+.app-my-msg{
+  padding-right: 15px;
+}
+
+.app-send-icon{
+  color: rgb(0, 114, 76);
+  font-size: 25px;
 }
 
 .app-mensajes{

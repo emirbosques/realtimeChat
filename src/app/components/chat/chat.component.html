@@ -1,0 +1,52 @@
+<h1>Chat</h1>
+<hr>
+
+<div class="app-mensajes" id="app-mensajes">
+
+  <div class="text-right app-my-msg">
+    <span class="badge badge-primary">Emir</span>
+    <p>Hola Mundo...</p>
+  </div>
+
+
+  <div>
+    <span class="badge badge-success">Rebe</span>
+    <p>Hola Planeta...</p>
+  </div>
+
+  <div>
+    <span class="badge badge-success">Rebe</span>
+    <p>Hola Planeta...</p>
+  </div>
+  <div>
+    <span class="badge badge-success">Rebe</span>
+    <p>Hola Planeta...</p>
+  </div>
+  <div>
+    <span class="badge badge-success">Rebe</span>
+    <p>Hola Planeta...</p>
+  </div>
+  <div>
+    <span class="badge badge-success">Rebe</span>
+    <p>Hola Planeta...</p>
+  </div>
+  <div>
+    <span class="badge badge-success">Rebe</span>
+    <p>Hola Planeta...</p>
+  </div>
+
+
+</div>
+
+<hr>
+
+<!-- <input [(ngModel)]="mensajes" type="text" name="mensajes" class="form-control" placeholder="Enter message"
+  (keyup.enter)="sendMessage()"> -->
+
+<div class="input-group mb-3">
+  <input [(ngModel)]="mensajes" type="text" name="mensajes" class="form-control" placeholder="Enter message"
+  (keyup.enter)="sendMessage()">
+  <div class="input-group-append">
+    <button class="btn btn-outline" type="button" (click)="sendMessage()"><i class="fas fa-paper-plane app-send-icon"></i></button>
+  </div>
+</div>
