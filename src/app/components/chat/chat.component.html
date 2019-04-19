@@ -3,38 +3,10 @@
 
 <div class="app-mensajes" id="app-mensajes">
 
-  <div class="text-right app-my-msg">
+  <div class="text-right app-my-msg" *ngFor="let c of chatSrv.chats ">
     <span class="badge badge-primary">Emir</span>
-    <p>Hola Mundo...</p>
+    <p>{{c.mensaje}}</p>
   </div>
-
-
-  <div>
-    <span class="badge badge-success">Rebe</span>
-    <p>Hola Planeta...</p>
-  </div>
-
-  <div>
-    <span class="badge badge-success">Rebe</span>
-    <p>Hola Planeta...</p>
-  </div>
-  <div>
-    <span class="badge badge-success">Rebe</span>
-    <p>Hola Planeta...</p>
-  </div>
-  <div>
-    <span class="badge badge-success">Rebe</span>
-    <p>Hola Planeta...</p>
-  </div>
-  <div>
-    <span class="badge badge-success">Rebe</span>
-    <p>Hola Planeta...</p>
-  </div>
-  <div>
-    <span class="badge badge-success">Rebe</span>
-    <p>Hola Planeta...</p>
-  </div>
-
 
 </div>
 
@@ -45,8 +17,9 @@
 
 <div class="input-group mb-3">
   <input [(ngModel)]="mensajes" type="text" name="mensajes" class="form-control" placeholder="Enter message"
-  (keyup.enter)="sendMessage()">
+    (keyup.enter)="sendMessage()">
   <div class="input-group-append">
-    <button class="btn btn-outline" type="button" (click)="sendMessage()"><i class="fas fa-paper-plane app-send-icon"></i></button>
+    <button class="btn btn-outline" type="button" (click)="sendMessage()"><i
+        class="fas fa-paper-plane app-send-icon"></i></button>
   </div>
 </div>
