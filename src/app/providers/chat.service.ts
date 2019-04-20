@@ -64,7 +64,9 @@ export class ChatService {
   }
 
   logoutFireAuth() {
+    this.userData = {};
     this._afAuth.auth.signOut();
+    console.log('User logged out OK');
   }
 
 }

@@ -1,17 +1,19 @@
-<!-- <ul>
-  <li class="text" *ngFor="let c of chat | async">
-    {{c.mensaje}}
-  </li>
-</ul> -->
 
+<!-- LOGOUT BUTTON -->
 <div class="container main-container">
-  <h1>SuperChat</h1>
+    <div class="col-md-12 text-right" *ngIf=" chatSrv.userData.uid " >
+        <button type="button" class="btn btn-outline-danger" (click)=" chatSrv.logoutFireAuth() ">
+            Logout
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+    </div>
+    <h1 class="text-left">SuperChat</h1>
 
-<app-login></app-login>
+<app-login *ngIf=" !chatSrv.userData.uid " ></app-login>
 
-<!--   <div class="chat-window">
+  <div class="chat-window" *ngIf=" chatSrv.userData.uid ">
     <app-chat></app-chat>
-  </div> -->
+  </div>
   
 </div>
 

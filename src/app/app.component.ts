@@ -1,6 +1,6 @@
+import { ChatService } from './providers/chat.service';
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -8,11 +8,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Real Time Chat =) ';
 
-  public chat: Observable<any[]>;
-  constructor(db: AngularFirestore) {
-    this.chat = db.collection('chats').valueChanges();
+  constructor(public chatSrv: ChatService) {
   }
 
 }
