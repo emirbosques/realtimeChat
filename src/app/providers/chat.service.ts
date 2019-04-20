@@ -1,6 +1,8 @@
 import { Messages } from './../interfaces/messages';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 import { map } from 'rxjs/operators';
 
 
@@ -12,8 +14,21 @@ export class ChatService {
   private getItemsCollections;
   private addItemsCollections: AngularFirestoreDocument<Messages>;
   public chats: Messages[] = [];
+  public userData: any = {};
 
-  constructor( private _afs: AngularFirestore) {
+  constructor(private _afs: AngularFirestore, public _afAuth: AngularFireAuth) {
+
+    this._afAuth.authState.subscribe(user => {
+      console.log('Data User Logged:', user);
+      if (user) {
+        this.userData.displayName = user.displayName;
+        this.userData.uid = user.uid;
+        this.userData.avatar = user.photoURL;
+
+        console.log('UserData :: ', this.userData);
+      }
+
+    });
 
   }
 
@@ -21,7 +36,7 @@ export class ChatService {
     this.getItemsCollections = this._afs.collection<Messages>('chats', ref => ref.orderBy('fecha', 'asc'));
 
     return this.getItemsCollections.valueChanges().pipe(
-      map( (mensajes: any[]) => {
+      map((mensajes: any[]) => {
         console.log('mensajes Srv:: ', mensajes);
         this.chats = mensajes;
       }));
@@ -36,6 +51,20 @@ export class ChatService {
     };
     console.log('Mensaje enviado Srv:');
     return this._afs.collection('chats').add(m);
+  }
+
+  loginFireAuth(prov: string) {
+    if (prov === 'google') {
+      console.log('Login Google Service');
+      this._afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    } else {
+      this._afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
+      console.log('Login Twitter Service');
+    }
+  }
+
+  logoutFireAuth() {
+    this._afAuth.auth.signOut();
   }
 
 }
