@@ -1,10 +1,19 @@
-<h1>Chat</h1>
+<div class="row">
+
+  <div class="col-6 text-left ">
+    <h1>Chat</h1>
+  </div>
+  <div class="col-6 text-right">
+    <img [src]="chatSrv.userData.avatar" class="app-chat-avatar">
+  </div>
+</div>
 <hr>
 
 <div class="app-mensajes" id="app-mensajes">
 
-  <div class="text-right app-my-msg" *ngFor="let c of chatSrv.chats ">
-    <span class="badge badge-primary">Emir</span>
+  <div class="app-my-msg" *ngFor="let c of chatSrv.chats " [ngClass]="{'text-right': chatSrv.userData.uid === c.uid}">
+    <span class="badge" [ngClass]="{'badge-primary': chatSrv.userData.uid === c.uid, 
+                        'badge-success': chatSrv.userData.uid !== c.uid}">{{c.nombre}}</span>
     <p>{{c.mensaje}}</p>
   </div>
 

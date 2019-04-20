@@ -3,4 +3,5 @@ export interface Messages {
     mensaje: string;
     fecha?: any;
     uid?: string;
+    avatar?: any;
 }

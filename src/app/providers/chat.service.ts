@@ -44,10 +44,11 @@ export class ChatService {
 
   addMessage(msg: any) {
     const m: Messages = {
-      nombre: 'DEMO',
+      nombre: this.userData.displayName,
       mensaje: msg,
       fecha: new Date().getTime(),
-      uid: 'NA'
+      uid: this.userData.uid,
+      avatar: this.userData.avatar
     };
     console.log('Mensaje enviado Srv:');
     return this._afs.collection('chats').add(m);
